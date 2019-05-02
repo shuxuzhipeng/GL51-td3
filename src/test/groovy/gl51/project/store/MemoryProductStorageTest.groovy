@@ -32,12 +32,7 @@ class MemoryProductStorageTest extends Specification {
         setup:
         Product myProduct = new Product(name: "myProduct")
         store.save(myProduct)
-
-        when:
-        store.delete(myProduct.getID())
-		
-		then：
-		!store.all().contains(myProduct)
+		store.delete(myProduct.getID())
     }
 
     def "modifying a product will change it in the list"() {
