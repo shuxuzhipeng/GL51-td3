@@ -1,13 +1,15 @@
 package gl51.project.store
 class MemoryProductStorage implements  ProductStorage {
 	private List<Product> productlist = []
-	static int id_total = 0
-    @Override
-    void save(Product p) {	
-		id_total += 1
-		p.id = id_total
-		productlist.add(p)
+	private int id_total = 1
+	@Override
+    int save(Product p) {
+		p.id = id
+        productList.add(p)
+		id += 1
+    	return p.id
     }
+ 
 	
     @Override
     void update(int id, Product p) {
@@ -43,7 +45,4 @@ class MemoryProductStorage implements  ProductStorage {
 		return productlist
     }
     
-	int getlastID(){
-		return id_total
-	}
 }

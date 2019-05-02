@@ -1,12 +1,13 @@
 package gl51.project.store
 
 interface ProductStorage {
-
-    /**
-     * creates an new product in the store
+	
+	/**
+     * creates an new product in the store and return id
      * @param p the product to store
      */
-    void save(Product p)
+    int save(Product p)
+	
 
     /**
      * updates an existing product in the store
