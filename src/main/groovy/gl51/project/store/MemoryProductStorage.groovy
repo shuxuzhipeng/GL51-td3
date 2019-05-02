@@ -24,7 +24,7 @@ class MemoryProductStorage implements  ProductStorage {
 
     @Override
     Product getByID(int id) {
-		def product = productList.find { it.id == id }
+		def product = productlist.find { it.id == id }
         if(product == null)
         {
           throw new NotExistingProductException("The wanted product has not been found!")
