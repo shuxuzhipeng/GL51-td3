@@ -3,7 +3,7 @@ package gl51.project.store
 
 class MemoryProductStorage implements  ProductStorage {
 	private Map<String, Product> productmap = [:]
-	private int id_total = 1
+	private static int id_total = 1
     @Override
     void save(Product p) {
     	p.id = id_total
