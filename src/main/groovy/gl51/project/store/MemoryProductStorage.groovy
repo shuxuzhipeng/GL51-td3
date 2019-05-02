@@ -1,12 +1,12 @@
 package gl51.project.store
 class MemoryProductStorage implements  ProductStorage {
 	private Map<String, Product> productmap = [:]
-	static int id_total = 1
+	static int id_total = 0
     @Override
-    void save(Product p) {
-    	p.id = id_total
-		productmap[p.name] = p
+    void save(Product p) {	
 		id_total += 1
+		p.id = id_total
+		productmap[p.name] = p
     }
 	
     @Override
@@ -19,13 +19,17 @@ class MemoryProductStorage implements  ProductStorage {
 
     @Override
     Product getByID(int id) {
+		boolean bool = false
     	for (e in productmap){
     		if (e.value.id == id){
     			Product product = e.value
+				bool = true
     			return product 
     		}
     	}
-    	throw new NotExistingProductException()
+		if(bool == false){
+			throw new NotExistingProductException()
+		}
     }
 
     @Override
@@ -47,6 +51,6 @@ class MemoryProductStorage implements  ProductStorage {
     }
     
 	int getlastID(){
-		return (id_total-1)
+		return id_total
 	}
 }
