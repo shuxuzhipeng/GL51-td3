@@ -33,8 +33,5 @@ interface ProductStorage {
      * @return a list of products
      */
     List<Product> all()
-	/**
-	*get last id
-	*/
 	
 }

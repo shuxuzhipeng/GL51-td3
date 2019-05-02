@@ -9,9 +9,7 @@ class MemoryProductStorage implements  ProductStorage {
 		productmap[p.name] = p
 		id_total += 1
     }
-	int getlastID(){
-		return (id_total-1)
-	}
+	
     @Override
     void update(int id, Product p) {
     	Product product = getByID(id)
@@ -49,4 +47,7 @@ class MemoryProductStorage implements  ProductStorage {
 		return list_result
     }
     
+	int getlastID(){
+		return (id_total-1)
+	}
 }
