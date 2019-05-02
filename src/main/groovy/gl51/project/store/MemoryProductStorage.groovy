@@ -1,6 +1,5 @@
 package gl51.project.store
-
-int id_total = 1
+public static int id_total = 1
 class MemoryProductStorage implements  ProductStorage {
 	private Map<String, Product> productmap = [:]
     @Override
