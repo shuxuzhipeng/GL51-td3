@@ -27,6 +27,7 @@ class MemoryProductStorage implements  ProductStorage {
     			return product 
     		}
     	}
+    	throw new NotExistingProductException
     }
 
     @Override
