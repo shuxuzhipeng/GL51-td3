@@ -24,13 +24,13 @@ class MemoryProductStorageTest extends Specification {
     }
     def "adding a product will generate a new id"() {
         setup:
-        Product myProduct = new Product(name: "myProduct")
+        def myProduct = new Product(name: "myProduct")
         store.save(myProduct)
     }
 
     def "deleting a product will remove it from the list"() {
         setup:
-        Product myProduct = new Product(name: "myProduct")
+        def myProduct = new Product(name: "myProduct")
         store.save(myProduct)
 		int id = store.getlastID()
 		when:
@@ -41,12 +41,12 @@ class MemoryProductStorageTest extends Specification {
 
     def "modifying a product will change it in the list"() {
         setup:
-        Product myProduct = new Product(name: "myProduct")
+        def myProduct = new Product(name: "myProduct")
         store.save(myProduct)
 		int id = store.getlastID()
 
         when:
-        Product myUpdatedProduct = new Product(name: "myUpdatedProduct")
+        def myUpdatedProduct = new Product(name: "myUpdatedProduct")
         store.update(id, myUpdatedProduct)
 
         then:
@@ -64,12 +64,12 @@ class MemoryProductStorageTest extends Specification {
 
     def "getting a product by its id will return it if it does exist"() {
         setup:
-        Product myProduct = new Product(name: "myProduct")
+        def myProduct = new Product(name: "myProduct")
         store.save(myProduct)
 		int id = store.getlastID()
 
         when:
-        Product gettedProduct = store.getByID(id)
+        def gettedProduct = store.getByID(id)
 
         then:
         myProduct == gettedProduct

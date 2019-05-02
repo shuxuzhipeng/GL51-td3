@@ -11,7 +11,7 @@ class MemoryProductStorage implements  ProductStorage {
 	
     @Override
     void update(int id, Product p) {
-    	Product product = getByID(id)
+    	def product = getByID(id)
 		
     	if(product != null){
 			int productIndex = productlist.indexof(product)
@@ -22,7 +22,7 @@ class MemoryProductStorage implements  ProductStorage {
 
     @Override
     Product getByID(int id) {
-		Product product = productList.find { it.id == id }
+		def product = productList.find { it.id == id }
         if(product == null)
         {
           throw new NotExistingProductException("The wanted product has not been found!")
@@ -32,7 +32,7 @@ class MemoryProductStorage implements  ProductStorage {
 
     @Override
     void delete(int id) {
-		Product product = getByID(id)
+		def product = getByID(id)
 		if (product != null){
 			productlist.remove(product)
 		}
