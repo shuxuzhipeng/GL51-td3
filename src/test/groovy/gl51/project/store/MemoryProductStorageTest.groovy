@@ -68,8 +68,7 @@ class MemoryProductStorageTest extends Specification {
 
     def "getting a product by its id will return it if it does exist"() {
         setup:
-        def myProduct = new Product(name: "myProduct")
-        def id = store.save(myProduct)
+		def id = store.save(new Product(name: "myProduct"))
 
         when:
         def gettedProduct = store.getByID(id)

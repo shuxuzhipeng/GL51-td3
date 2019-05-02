@@ -4,9 +4,9 @@ class MemoryProductStorage implements  ProductStorage {
 	private int id_total = 1
 	@Override
     int save(Product p) {
-		p.id = id
+		p.id = id_total
         productList.add(p)
-		id += 1
+		id_total += 1
     	return p.id
     }
  
