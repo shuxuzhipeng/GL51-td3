@@ -1,30 +1,32 @@
 package gl51.project.store
 class MemoryProductStorage implements  ProductStorage {
-	private Map<String, Product> productmap = [:]
+	private list<Product> productlist = []
 	static int id_total = 0
     @Override
     void save(Product p) {	
-		MemoryProductStorage.id_total += 1
-		p.id = MemoryProductStorage.id_total
-		productmap[p.name] = p
+		id_total += 1
+		p.id = id_total
+		productlist.add(p)
     }
 	
     @Override
     void update(int id, Product p) {
     	Product product = getByID(id)
+		
     	if(product != null){
-    		productmap[product.name] = p
+			int productIndex = productlist.indexof(product)
+			productlist.remove(product)
+			productlist.add(productIndex,p)
     	}
     }
 
     @Override
     Product getByID(int id) {
 		boolean bool = false
-    	for (e in productmap){
-    		if (e.value.id == id){
-    			Product product = e.value
+    	for (e in productlist){
+    		if (e.id == id){
 				bool = true
-    			return product 
+    			return e
     		}
     	}
 		if(bool == false){
@@ -36,21 +38,16 @@ class MemoryProductStorage implements  ProductStorage {
     void delete(int id) {
 		Product product = getByID(id)
 		if (product != null){
-			productmap.remove(product)
+			productlist.remove(product)
 		}
     }
 
     @Override
     List<Product> all() {
-		List<Product> list_result = []
-		for (e in productmap) {
-			list_result.add(e.value)	
-		}
-		print(productmap.size())
-		return list_result
+		return productlist
     }
     
 	int getlastID(){
-		return MemoryProductStorage.id_total
+		return id_total
 	}
 }
