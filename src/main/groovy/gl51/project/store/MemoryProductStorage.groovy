@@ -10,9 +10,11 @@ class MemoryProductStorage implements  ProductStorage {
 		productmap[p.name] = p
 		id_total += 1
     }
-	
+	int getlastID(){
+		return (id_total-1)
+	}
     @Override
-    void update(String id, Product p) {
+    void update(int id, Product p) {
     	Product product = getByID(id)
     	if(product != null){
     		productmap[product.name] = p
@@ -20,7 +22,7 @@ class MemoryProductStorage implements  ProductStorage {
     }
 
     @Override
-    Product getByID(String id) {
+    Product getByID(int id) {
     	for (e in productmap){
     		if (e.value.id == id){
     			Product product = e.value
@@ -31,7 +33,7 @@ class MemoryProductStorage implements  ProductStorage {
     }
 
     @Override
-    void delete(String id) {
+    void delete(int id) {
 		Product product = getByID(id)
 		if (product != null){
 			productmap.remove(product)

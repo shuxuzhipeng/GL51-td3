@@ -32,7 +32,7 @@ class MemoryProductStorageTest extends Specification {
         setup:
         Product myProduct = new Product(name: "myProduct")
         store.save(myProduct)
-		store.delete(myProduct.getID())
+		store.delete(store.getlastID())
     }
 
     def "modifying a product will change it in the list"() {
@@ -42,7 +42,7 @@ class MemoryProductStorageTest extends Specification {
 
         when:
         Product myUpdatedProduct = new Product(name: "myUpdatedProduct")
-        store.update(myProduct.getID(), myUpdatedProduct)
+        store.update(store.getlastID(), myUpdatedProduct)
 
         then:
         myProduct != myUpdatedProduct
@@ -51,12 +51,8 @@ class MemoryProductStorageTest extends Specification {
     def "getting a product by its id will throw a NotExistingProductException if it doesn't exist"() {
         setup:
         int id = -1
-
-        when:
         store.getByID(id)
-		
-		then:
-		throw NotExistingProductException
+	
     }
 
     def "getting a product by its id will return it if it does exist"() {
@@ -65,7 +61,7 @@ class MemoryProductStorageTest extends Specification {
         store.save(myProduct)
 
         when:
-        Product gettedProduct = store.getByID(myProduct.getID())
+        Product gettedProduct = store.getByID(store.getlastID())
 
         then:
         myProduct == gettedProduct
