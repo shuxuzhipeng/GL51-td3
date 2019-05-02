@@ -1,6 +1,6 @@
 package gl51.project.store
 class MemoryProductStorage implements  ProductStorage {
-	private list<Product> productlist = []
+	private List<Product> productlist = []
 	static int id_total = 0
     @Override
     void save(Product p) {	
