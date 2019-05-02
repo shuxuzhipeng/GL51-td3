@@ -10,7 +10,7 @@ class MemoryProductStorage implements  ProductStorage {
 		productmap[p.name] = p
 		id_total += 1
     }
-	@Override
+
 	int getlastID(){
 		return (id_total-1)
 	}
