@@ -13,15 +13,14 @@ class MemoryProductStorage implements  ProductStorage {
 	
     @Override
     void update(int id, Product p) {
-    	def product = getByID(id)
-		
-    	if(product != null){
-			int productIndex = productlist.indexof(product)
-			productlist[productIndex].name = p.name
-			productlist[productIndex].description = p.description
-			productlist[productIndex].price = p.price
-			productlist[productIndex].idealTemperature = p.idealTemperature
-    	}
+		for(e in productlist){
+			if(e.id == id){
+				e.name = p.name
+				e.description = p.description
+				e.price = p.price
+				e.idealTemperature = p.idealTemperature
+			}
+		}
     }
 
     @Override
