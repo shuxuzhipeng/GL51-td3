@@ -22,16 +22,12 @@ class MemoryProductStorage implements  ProductStorage {
 
     @Override
     Product getByID(int id) {
-		boolean bool = false
-    	for (e in productlist){
-    		if (e.id == id){
-				bool = true
-    			return e
-    		}
-    	}
-		if(bool == false){
-			throw new NotExistingProductException()
-		}
+		Product product = productList.find { it.id == id }
+        if(product == null)
+        {
+          throw new NotExistingProductException("The wanted product has not been found!")
+        }
+        return product
     }
 
     @Override
