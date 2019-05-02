@@ -17,7 +17,10 @@ class MemoryProductStorage implements  ProductStorage {
 		
     	if(product != null){
 			int productIndex = productlist.indexof(product)
-			productlist.add(productIndex,p)
+			productlist[productIndex].name = p.name
+			productlist[productIndex].description = p.description
+			productlist[productIndex].price = p.price
+			productlist[productIndex].idealTemperature = p.idealTemperature
     	}
     }
 
