@@ -17,7 +17,6 @@ class MemoryProductStorage implements  ProductStorage {
 		
     	if(product != null){
 			int productIndex = productlist.indexof(product)
-			productlist.remove(product)
 			productlist.add(productIndex,p)
     	}
     }
