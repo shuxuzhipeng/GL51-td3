@@ -13,20 +13,20 @@ interface ProductStorage {
      * Beware the product id must be filled in
      * @param p the product to update
      */
-    void update(String id, Product p)
+    void update(int id, Product p)
 
     /**
      * get a product by its id
      * @param id
      * @return a product
      */
-    Product getByID(String id)
+    Product getByID(int id)
 
     /**
      * deletes a product by its id
      * @param id
      */
-    void delete(String id)
+    void delete(int id)
 
     /**
      * list all products
