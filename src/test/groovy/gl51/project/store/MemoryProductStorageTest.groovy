@@ -35,7 +35,9 @@ class MemoryProductStorageTest extends Specification {
 
         when:
         store.delete(myProduct.getID())
-
+		
+		then：
+		!store.all().contains(myProduct)
     }
 
     def "modifying a product will change it in the list"() {
@@ -57,6 +59,9 @@ class MemoryProductStorageTest extends Specification {
 
         when:
         store.getByID(id)
+		
+		then:
+		throw NotExistingProductException
     }
 
     def "getting a product by its id will return it if it does exist"() {
