@@ -4,8 +4,8 @@ class MemoryProductStorage implements  ProductStorage {
 	static int id_total = 0
     @Override
     void save(Product p) {	
-		id_total += 1
-		p.id = id_total
+		MemoryProductStorage.id_total += 1
+		p.id = MemoryProductStorage.id_total
 		productmap[p.name] = p
     }
 	
@@ -51,6 +51,6 @@ class MemoryProductStorage implements  ProductStorage {
     }
     
 	int getlastID(){
-		return id_total
+		return MemoryProductStorage.id_total
 	}
 }
